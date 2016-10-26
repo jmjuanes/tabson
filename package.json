@@ -1,0 +1,11 @@
+{
+  "name": "tabson",
+  "version": "0.0.1",
+  "description": "Convert a tab file to JSON",
+  "keywords": [ "tab", "tsv", "json", "tabulation" ],
+  "author": "Josemi Juanes <josemijuanes@gmail.com>",
+  "main": "./index.js",
+  "repository": { "type": "git", "url": "https://github.com/jmjuanes/tabson.git" },
+  "dependencies": { "pstat": "1.0.2", "readl-async": "0.0.3" },
+  "license": "MIT"
+}
