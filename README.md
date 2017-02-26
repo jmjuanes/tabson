@@ -57,10 +57,9 @@ A `string` with the path of the file to read.
 An `object` with the following options:
 
 - `encoding`: set the encoding. Default: `utf8`.
-- `chunk`: set the chunk size. Default is 4098.
 - `sep`: set the file separator. Default is a tabulation `\t`.
 - `empty`: set the value for the empty columns. Default is an empty string.
-- `type`: set the output type:
+- `type`: set the output type. Default is `object`.
    - `array`: each row of the table will be saved as an array object.
    - `object`: each row of the table will he saved as an object with the format `column_name : column_content`.
 

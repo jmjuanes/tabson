@@ -1,6 +1,6 @@
 //Import dependencies
-var pstat = require('pstat');
-var readl = require('readl-async');
+var fs = require('fs');
+var readline = require('readline');
 
 //Tabson object
 module.exports = function(file, opt, cb)
@@ -13,9 +13,6 @@ module.exports = function(file, opt, cb)
 
   //Check the encoding
   if(typeof opt.encoding === 'undefined'){ opt.encoding = 'utf8'; }
-
-  //Check the read chunk
-  if(typeof opt.chunk === 'undefined'){ opt.chunk = 4098; }
 
   //Check the separator
   if(typeof opt.sep === 'undefined'){ opt.sep = '\t'; }
@@ -30,13 +27,13 @@ module.exports = function(file, opt, cb)
   var out = { header: [], data: [] };
 
   //Initialize the file reader
-  var reader = new readl(file, { encoding: opt.encoding, emptyLines: false, chunk: opt.chunk });
+  var reader = readline.createInterface({ input: fs.createReadStream(file).setEncoding(opt.encoding) });
 
   //Catch the error
   reader.on('error', function(error){ return cb(error, [], []); });
 
   //Read a new line
-  reader.on('line', function(line, index)
+  reader.on('line', function(line)
   {
     //Check the header
     if(out.header.length === 0)
@@ -79,8 +76,5 @@ module.exports = function(file, opt, cb)
   });
 
   //End the file
-  reader.on('end', function(){ return cb(false, out.header, out.data); });
-
-  //Read the file
-  reader.read();
+  reader.on('close', function(){ return cb(false, out.header, out.data); });
 };
