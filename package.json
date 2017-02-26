@@ -1,6 +1,6 @@
 {
   "name": "tabson",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert a tab file to JSON",
   "keywords": [ "tab", "tsv", "json", "tabulation" ],
   "author": "Josemi Juanes <josemijuanes@gmail.com>",
